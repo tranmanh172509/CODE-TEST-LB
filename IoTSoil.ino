@@ -3,7 +3,7 @@
 
 
 // using F() macro to lower Arduino SRAM usage
-#define  WIFI_SSID      F( "DTT-SANXUAT" )
+#define  WIFI_SSID      F( "DTT-T1" )
 #define  WIFI_PASSWORD  F( "68686868" )
  
 #define  IOT_ASSET_ID   F( "33khwmcNaidrPJ2oZpcgde" )

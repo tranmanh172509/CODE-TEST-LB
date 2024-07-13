@@ -1,0 +1,27 @@
+     Cách nạp Bootloader và TestPin cho kit arduino 328
+Cần 1 kit nạp ISP:
+ Vào arduino chọn file -> Examples -> ArduinoISP rồi nạp 
+ 
+a. Khi mạch chưa gắn thạch anh thực hiện các bước:
+	- Kết nối các chân của kit đã nạp ISP với kit cần nạp
+
+Kit đã nạp ISP => Kit cần nạp ISP
+	Chân 10 -> Chân Reset
+	Chân 11 -> Chân 11
+	Chân 12 -> Chân 12
+	Chân 13 -> Chân 13
+	Chân VCC, GND-> Chân VCC, GND
+
+- Sửa cổng COM trong file “Burn_atmega328_TestPinAll.bat” tương ứng với cổng COM đang sử dụng
+- Nạp TestPinAll cho arduino bằng cách nạp file “Burn_atmega328_TestPinAll.bat”
+- Test pin bằng loa chip
+
++ Nối nguồn (VCC, GND) cho kit.
++ Một chân của loa nối GND, một chân chạm vào các chân Digital, Analog, Rx, Tx (của thạch anh – XTAL – CRYSTAL) →Sẽ không test nếu mạch đã gắn thạch anh
++ Kit bình thường nếu 2 chân bất kì cạnh nhau test có tiếng kêu khác nhau.
+
+
+b. Khi mạch đã gắn thạch anh
+	- Nối mạch như trên + sửa cổng COM
+	- Nạp lại Bootloader bằng file “Burn_atmega328_16mhz.bat”
+	- Nạp chương trình TestPin từ phần mềm Arduino

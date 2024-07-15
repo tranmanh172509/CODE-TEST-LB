@@ -40,11 +40,7 @@ void loop() {
   Serial.print('\t');
   Serial.print(v7R + 7*gap);
   Serial.print('\t');  
-  LbIRLine.print(line);
-  Serial.print('\t');  
-  LbIRLine.println(lineValue); 
-  // LbIRLine.print(line);
-  // Serial.println();
+  LbIRLine.println(line);
 
   delay(100);                       // thời gian trễ giữa mỗi lần đọc
 }

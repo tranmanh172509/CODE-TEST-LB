@@ -27,7 +27,9 @@ const char *mario = "mario:d=4,o=5,b=100:16e6,16e6,32p,8e6,16c6,8e6,8g6,8p,8g,8p
 int speed = 1000;
  
 void setup() {
-  Leanbot.begin();                                   // initialize Leanbot
+  Leanbot.begin(); 
+  
+  LbGripper.close();// initialize Leanbot
   LbIRLine.doManualCalibration(TB1A);                // touch TB1A to measure black/white level, align bar sensor
 //LbIRLine.setThreshold(287,  209,  472,  281);      // or measure first and then edit the threshold in the code
 }

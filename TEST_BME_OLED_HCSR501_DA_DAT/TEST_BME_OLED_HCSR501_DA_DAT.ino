@@ -17,7 +17,7 @@ void setup() {
     Serial.println("Could not find a valid BME280 sensor, check wiring!");
     while (1);
   }
-  u8g2.setBusClock( 400000 );                // max I2C speed
+  u8g2.setBusClock( 100000 );                // max I2C speed
   u8g2.begin();
   u8g2.setFont( u8g2_font_luBS08_tr );        // OLED: choose a suitable font
 }

@@ -11,7 +11,7 @@ void setup() {
 
  
 void loop() {
-  for(int i =0; i<3; i++)  {         // Nhấc thả vật 5 lần
+  for(int i = 0; i<3; i++)  {         // Nhấc thả vật 5 lần
     LbGripper.close();
     LbGripper.open();
   }

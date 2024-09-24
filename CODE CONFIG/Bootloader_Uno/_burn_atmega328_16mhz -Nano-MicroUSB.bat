@@ -1,5 +1,5 @@
 
-@set COMX=COM6
+@set COMX=COM3
 
 @echo.
 @echo ======= Burn Bootloader for atmega8_8mhz =======

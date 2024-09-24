@@ -1,4 +1,5 @@
 #include <Leanbot.h>
+#include <anyrtttl.h>
  
 String command;
 byte lineValue;
@@ -59,7 +60,7 @@ void serial_handleCommandLine(){
   command = Serial.readStringUntil('\n');
  
   if      (command == "Motion")              MotionDemo();
-  else if (command == "Buzzer")              BuzzerDemo();
+  else if (command.startsWith("Buzzer"))     BuzzerDemo();
   else if (command == "RGBLeds")             RGBLedsDemo();
   else if (command == "Objectfollow")        ObjectfollowDemo();
   else if (command == "StraightMotion")      StraightMotionDemo();
@@ -141,11 +142,8 @@ void MotionDemo(){
 }
  
 void BuzzerDemo(){
-  const int notes[] = {261, 293, 329, 349, 392, 440, 493, 523};
-  for (int i = 0; i < 8; i++) {
-    Leanbot.tone(notes[i], 100);
-    LbDelay(100);
-  }
+  const char* RTTTLnotes = command.substring(7).c_str();
+  anyrtttl::blocking::play(LBPIN_BUZZER, RTTTLnotes );
 }
  
 void RGBLedsDemo(){
@@ -186,16 +184,18 @@ void GripperDemo(){
  
 void ObjectfollowDemo(){
   int d = Leanbot.pingCm();
-  int limit  = 15;
-  int offset = 1;
-  while( (d != 0) && (d < 100) ){
-    d = Leanbot.pingCm();
-    if (d > (limit + offset)) LbMotion.runLR(V_MAX, V_MAX);
-    else if (d < (limit - offset)) LbMotion.runLR(-V_MAX, -V_MAX);
+  const int limit = 20;
+  const int offset = 2;
+  
+  while ((d != 0) && (d < 50)) {
+    if (d > limit + offset)      LbMotion.runLR(V_MAX, V_MAX);  
+    else if (d < limit - offset) LbMotion.runLR(-V_MAX, -V_MAX);
     printAllSensors();
     LbDelay(50);
+    d = Leanbot.pingCm();
   }
-  LbMotion.runLR(0, 0);
+  
+  LbMotion.runLR(0, 0); 
 }
  
 void StraightMotionDemo(){
